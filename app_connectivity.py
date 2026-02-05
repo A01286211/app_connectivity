@@ -279,5 +279,5 @@ def main():
     elif st.session_state.stage == 5:
         show_stage_5()
 
-if _name_ == "_main_":
+if __name__ == "__main__":
     main()
