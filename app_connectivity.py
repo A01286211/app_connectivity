@@ -59,10 +59,10 @@ st.markdown("""
 
 # ==================== STAGE 0: Initial Professional Interface ====================
 def show_stage_0():
-    st.markdown("<h1 class='main-header'>🔧 System Verification Tool v2.4</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='main-header'>System Verification Tool v2.4</h1>", unsafe_allow_html=True)
     st.markdown("---")
     
-    st.info("📋 *Purpose*: Verify system connectivity and user authentication protocols")
+    st.info("*Purpose*: Verify system connectivity and user authentication protocols")
     
     col1, col2 = st.columns(2)
     with col1:
@@ -70,21 +70,21 @@ def show_stage_0():
     with col2:
         st.metric("Protocol Version", "2.4.1", "Latest")
     
-    st.markdown("### 📝 Pre-Flight Checklist")
+    st.markdown("### Pre-Flight Checklist")
     st.write("- ✅ Database Connection")
     st.write("- ✅ API Gateway Status")
     st.write("- ⏳ User Verification Pending")
     
     st.warning("⚠️ User verification required to proceed with system diagnostics")
     
-    if st.button("🚀 Begin Verification Process", use_container_width=True):
+    if st.button("Begin Verification Process", use_container_width=True):
         st.session_state.stage = 1
         st.rerun()
 
 
 # ==================== STAGE 1: Fake CAPTCHA ====================
 def show_stage_1():
-    st.markdown("<h1 class='main-header'>🔐 Security Verification</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='main-header'>Security Verification</h1>", unsafe_allow_html=True)
     st.markdown("---")
     
     st.markdown("<div class='status-box'>", unsafe_allow_html=True)
@@ -171,8 +171,8 @@ def show_stage_3():
     st.warning("🔐 Encrypted message detected. Decrypting...")
     
     encrypted_messages = [
-        "01110100 01100101 00100000 01100001 01101101 01101111 00100000 01110011 01101000 01100101 01111001 01110010 01100001",
         "WW91IGJl",
+        "01110100 01100101 00100000 01100001 01101101 01101111 00100000 01110011 01101000 01100101 01111001 01110010 01100001",
         "bXkgVmFs",
         "ZW50aW5l",
         "Pw=="
@@ -188,14 +188,14 @@ def show_stage_3():
     
     st.success("✅ Decryption complete!")
     
-    if st.button("📖 Read Message", use_container_width=True):
+    if st.button("Read Message", use_container_width=True):
         st.session_state.stage = 4
         st.rerun()
 
 
 # ==================== STAGE 4: Puzzle/Riddle ====================
 def show_stage_4():
-    st.markdown("<h1 class='main-header'>🧩 Final Verification Step</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='main-header'>Final Verification Step</h1>", unsafe_allow_html=True)
     st.markdown("---")
     
     st.markdown("<div class='status-box'>", unsafe_allow_html=True)
@@ -203,27 +203,22 @@ def show_stage_4():
     st.write("One last verification before accessing the message...")
     st.markdown("</div>", unsafe_allow_html=True)
     
-    st.markdown("### 💭 Solve this:")
+    st.markdown("### Riddle me this twin:")
     st.write("""
-    *A riddle for you:*
-    
-    I come once a year, with hearts all around,  
-    Chocolates and flowers, love is found,  
-    Cupid shoots arrows, couples unite,  
-    What celebration is this? Get it right!
+    Porque la foca miro al techo?
     """)
     
     answer = st.text_input("Your answer:", key="riddle_answer").lower().strip()
     
     if st.button("Submit Answer", use_container_width=True):
-        if "valentine" in answer:
+        if "focos" in answer:
             st.balloons()
-            st.success("🎉 Correct! Unlocking final message...")
+            st.success("Correcto jeje")
             time.sleep(2)
             st.session_state.stage = 5
             st.rerun()
         else:
-            st.error("❌ Not quite... Think about February 14th!")
+            st.error("no mames pa.")
 
 
 # ==================== STAGE 5: The Big Reveal! ====================
@@ -231,18 +226,18 @@ def show_stage_5():
     st.markdown("""
     <div class='valentine-box'>
         <div class='heart'>❤️</div>
-        <h1>Surprise! 🎉</h1>
-        <h2>This wasn't really a work project...</h2>
+        <h1>Sorpresa!</h1>
+        <h2>Esto no era realmente un proyecto de softtek...</h2>
         <br>
-        <h3>I built this entire app just to ask you one question:</h3>
+        <h3>Te hice una aplicación para preguntarte...:</h3>
         <br>
         <h1 style='font-size: 48px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>
-            Will you be my Valentine? 💕
+            Quieres ser mi valentwin? 💕
         </h1>
         <br>
         <p style='font-size: 18px; font-style: italic;'>
-            I really like you, and I wanted to do something special to show it. 
-            <br>I hope this made you smile! 😊
+            Me tomó mucho mas tiempo y esfuerzo del que esperaba, pero valió la pena solo para ver si decías que sí. 
+            <br>Ojalá tengas una gran sonrisa en tu cara y no una expresión de odio en este momento! 😊
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -251,17 +246,17 @@ def show_stage_5():
     
     col1, col2 = st.columns(2)
     with col1:
-        if st.button("💝 Yes! Absolutely!", use_container_width=True):
+        if st.button("Sí! Acekto!❤️", use_container_width=True):
             st.balloons()
-            st.success("🎉 You've made me the happiest person! 💕")
+            st.success("Me acabas de hacer el nigga más feliz del mundo :)")
             st.snow()
     
     with col2:
-        if st.button("🤔 Let me think about it", use_container_width=True):
-            st.info("That's okay! Take your time 😊")
+        if st.button("Te odio fuckass jigga", use_container_width=True):
+            st.info("twin 🥀🥀🥀")
     
     st.markdown("---")
-    st.markdown("<p style='text-align: center; color: #888;'>Made with ❤️ and Python</p>", unsafe_allow_html=True)
+    st.markdown("<p style='text-align: center; color: #888;'>Hecho con ❤️ y Python</p>", unsafe_allow_html=True)
 
 
 # ==================== Main App Logic ====================
