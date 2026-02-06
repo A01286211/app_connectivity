@@ -232,7 +232,7 @@ def show_stage_5():
         <h3>Te hice una aplicación para preguntarte...:</h3>
         <br>
         <h1 style='font-size: 48px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);'>
-            Quieres ser mi valentwin? 💕
+            Will you be my valentwin? 💕
         </h1>
         <br>
         <p style='font-size: 18px; font-style: italic;'>
