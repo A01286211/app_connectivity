@@ -2,7 +2,6 @@ import streamlit as st
 import time
 import random
 
-# Initialize session state
 if 'stage' not in st.session_state:
     st.session_state.stage = 0
 if 'captcha_solved' not in st.session_state:
@@ -10,14 +9,12 @@ if 'captcha_solved' not in st.session_state:
 if 'server_checked' not in st.session_state:
     st.session_state.server_checked = False
 
-# Page config
 st.set_page_config(
     page_title="System Verification Tool v2.4",
     page_icon="🔧",
     layout="centered"
 )
 
-# Custom CSS for professional look
 st.markdown("""
 <style>
     .main-header {
@@ -57,7 +54,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# ==================== STAGE 0: Initial Professional Interface ====================
 def show_stage_0():
     st.markdown("<h1 class='main-header'>System Verification Tool v2.4</h1>", unsafe_allow_html=True)
     st.markdown("---")
@@ -81,8 +77,7 @@ def show_stage_0():
         st.session_state.stage = 1
         st.rerun()
 
-
-# ==================== STAGE 1: Fake CAPTCHA ====================
+# parte 1
 def show_stage_1():
     st.markdown("<h1 class='main-header'>Security Verification</h1>", unsafe_allow_html=True)
     st.markdown("---")
@@ -94,7 +89,7 @@ def show_stage_1():
     
     st.markdown("### 🤖 Verify you're human")
     
-    # Simple math CAPTCHA
+    # this is NOT a real captcha
     if 'captcha_answer' not in st.session_state:
         num1 = random.randint(1, 10)
         num2 = random.randint(1, 10)
@@ -115,9 +110,9 @@ def show_stage_1():
             st.error("❌ Incorrect answer. Please try again.")
 
 
-# ==================== STAGE 2: Server Connectivity Check ====================
+# parte 2
 def show_stage_2():
-    st.markdown("<h1 class='main-header'>🌐 Server Connectivity Check</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='main-header'>Server Connectivity Check</h1>", unsafe_allow_html=True)
     st.markdown("---")
     
     if not st.session_state.server_checked:
@@ -131,7 +126,7 @@ def show_stage_2():
             "api.gateway.io",
             "database.cluster.net",
             "cdn.content.org",
-            "special.message.server"  # The hint!
+            "special.message.server"
         ]
         
         for i, server in enumerate(servers):
@@ -139,15 +134,15 @@ def show_stage_2():
             progress_bar.progress((i + 1) / len(servers))
             time.sleep(0.8)
         
-        st.success("✅ All servers responding normally!")
+        st.success("All servers responding normally!")
         st.session_state.server_checked = True
         time.sleep(1)
         st.rerun()
     
     else:
-        st.success("✅ Connection established successfully!")
+        st.success("Connection established successfully!")
         
-        st.markdown("### 📊 Connection Report")
+        st.markdown("### Connectivity Report")
         col1, col2, col3 = st.columns(3)
         with col1:
             st.metric("Latency", "12ms", "-3ms")
@@ -156,19 +151,19 @@ def show_stage_2():
         with col3:
             st.metric("Bandwidth", "1.2Gbps", "+0.3Gbps")
         
-        st.info("🔔 Notice: Special message detected from server...")
+        st.info("Notice: Message recieved from server...")
         
         if st.button("📩 Retrieve Message", use_container_width=True):
             st.session_state.stage = 3
             st.rerun()
 
 
-# ==================== STAGE 3: Decoding Message ====================
+# parte 3
 def show_stage_3():
-    st.markdown("<h1 class='main-header'>📡 Message Decryption</h1>", unsafe_allow_html=True)
+    st.markdown("<h1 class='main-header'>Message Decryption</h1>", unsafe_allow_html=True)
     st.markdown("---")
     
-    st.warning("🔐 Encrypted message detected. Decrypting...")
+    st.warning("Encrypted message detected. Decrypting...")
     
     encrypted_messages = [
         "WW91IGJl",
@@ -186,14 +181,14 @@ def show_stage_3():
         progress_bar.progress((i + 1) / len(encrypted_messages))
         time.sleep(1)
     
-    st.success("✅ Decryption complete!")
+    st.success("Decryption complete!")
     
     if st.button("Read Message", use_container_width=True):
         st.session_state.stage = 4
         st.rerun()
 
 
-# ==================== STAGE 4: Puzzle/Riddle ====================
+# parte 4
 def show_stage_4():
     st.markdown("<h1 class='main-header'>Final Verification Step</h1>", unsafe_allow_html=True)
     st.markdown("---")
@@ -218,10 +213,10 @@ def show_stage_4():
             st.session_state.stage = 5
             st.rerun()
         else:
-            st.error("no mames pa.")
+            st.error("no mames.")
 
 
-# ==================== STAGE 5: The Big Reveal! ====================
+# parte 5
 def show_stage_5():
     st.markdown("""
     <div class='valentine-box'>
@@ -236,7 +231,7 @@ def show_stage_5():
         </h1>
         <br>
         <p style='font-size: 18px; font-style: italic;'>
-            Me tomó mucho mas tiempo y esfuerzo del que esperaba, pero valió la pena solo para ver si decías que sí. 
+            Me tomó mucho mas tiempo del que esperaba, pero valió la pena solo para ver si decías que sí. 
             <br>Ojalá tengas una gran sonrisa en tu cara y no una expresión de odio en este momento! 😊
         </p>
     </div>
@@ -259,7 +254,6 @@ def show_stage_5():
     st.markdown("<p style='text-align: center; color: #888;'>Hecho con ❤️ y Python</p>", unsafe_allow_html=True)
 
 
-# ==================== Main App Logic ====================
 def main():
     if st.session_state.stage == 0:
         show_stage_0()
